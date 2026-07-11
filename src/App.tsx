@@ -1,7 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { FilterStatePanel } from './FilterStatePanel';
 import { FiltersBarDemo } from './FiltersBarDemo';
-import type { FiltersState } from './demoData';
 import './styles/tokens.css';
 import './styles/filterBar.css';
 
@@ -23,14 +21,6 @@ export default function App() {
   const initial = useMemo(() => readQuery(), []);
   const [theme, setTheme] = useState<Theme>(initial.theme);
   const embed = initial.embed;
-  const [filtersState, setFiltersState] = useState<FiltersState | null>(null);
-  const [detail, setDetail] = useState<{
-    services: string[];
-    subscribers: string[];
-    kpi: string | null;
-    activeAreas: string[];
-    areaSelections: Record<string, string[]>;
-  } | null>(null);
 
   useEffect(() => {
     document.body.className = theme;
@@ -52,16 +42,7 @@ export default function App() {
           {theme === 'connect-light' ? 'Dark theme' : 'Light theme'}
         </button>
       )}
-      <FiltersBarDemo
-        onChange={setFiltersState}
-        onViewState={setDetail}
-      />
-      {!embed && (
-        <FilterStatePanel
-          state={filtersState}
-          extra={detail ?? undefined}
-        />
-      )}
+      <FiltersBarDemo />
     </div>
   );
 }
