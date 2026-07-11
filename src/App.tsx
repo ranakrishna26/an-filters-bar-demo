@@ -9,10 +9,10 @@ type Theme = 'connect-light' | 'connect-dark';
 export const FRAME_WIDTH = 1106;
 export const FRAME_HEIGHT = 718.5;
 
-/** Natural bar layout width — scaled uniformly if needed. */
-const BAR_WIDTH = 1026;
-const BAR_HEIGHT = 200;
-const FRAME_PAD = 40;
+/** Natural bar layout — scaled up uniformly to fill the frame width. */
+const BAR_WIDTH = 760;
+const BAR_HEIGHT = 140;
+const FRAME_PAD = 48;
 
 function readQuery() {
   const params = new URLSearchParams(window.location.search);

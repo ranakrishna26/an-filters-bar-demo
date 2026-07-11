@@ -10,8 +10,11 @@
   align-items: start;
   padding: 16px 16px 4px;
   background: var(--color-background-fill-1);
+  border: var(--border-width-light) solid var(--color-background-border-2);
+  border-radius: var(--border-radius-smooth);
   position: relative;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .an-filters-bar--has-exposed {
@@ -627,11 +630,12 @@ html[data-embed='true'] #root {
 }
 
 .embed-scale-slot__inner--bar {
-  width: 1026px;
+  width: 760px;
 }
 
 .embed-scale-slot__inner--bar .an-filters-bar {
-  width: 1026px;
+  width: 760px;
+  border: var(--border-width-light) solid var(--color-background-border-2);
   border-radius: var(--border-radius-smooth);
 }
 
