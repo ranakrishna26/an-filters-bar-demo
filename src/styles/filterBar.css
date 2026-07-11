@@ -569,7 +569,7 @@ body.connect-light .an-segmented-control {
   cursor: pointer;
 }
 
-/* Embed: pin bar to the top so dropdowns open into free space below */
+/* Embed: contain 1106×718.5 frame, center UI, never crop */
 .app-shell--embed {
   min-height: 100%;
   height: 100%;
@@ -589,37 +589,40 @@ html[data-embed='true'] #root {
   background: var(--color-background-fill-0);
 }
 
-.app-shell__frame {
+.embed-frame {
   position: relative;
   flex-shrink: 0;
   overflow: hidden;
   background: var(--color-background-fill-0);
 }
 
-.app-shell__frame-inner {
+.embed-frame__canvas {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   transform-origin: top left;
+  overflow: hidden;
   background: var(--color-background-fill-0);
 }
 
-.app-shell__frame-content {
+.embed-frame__center {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 40px;
   box-sizing: border-box;
 }
 
-.app-shell__frame-content .an-filters-bar {
+.embed-frame__bar-slot {
   width: 100%;
-  max-width: 100%;
+  max-width: 1026px;
   flex-shrink: 0;
+}
+
+.embed-frame__bar-slot .an-filters-bar {
+  width: 100%;
   border-radius: var(--border-radius-smooth);
-  box-shadow: 0 1px 0 var(--color-background-border-2);
 }
 
 .app-shell--embed .an-filters-bar {
