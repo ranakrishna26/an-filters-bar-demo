@@ -1,4 +1,8 @@
-import { useMemo, useState } from 'react';
+import {
+  useMemo,
+  useState,
+  type CSSProperties,
+} from 'react';
 import {
   isRangeGranularity,
   isSameDay,
@@ -14,6 +18,8 @@ interface CalendarPopupProps {
   granularity: Granularity;
   onChange: (start: Date, end: Date) => void;
   onClose: () => void;
+  style?: CSSProperties;
+  className?: string;
 }
 
 function daysInMonth(year: number, month: number) {
@@ -26,6 +32,8 @@ export function CalendarPopup({
   granularity,
   onChange,
   onClose,
+  style,
+  className = '',
 }: CalendarPopupProps) {
   const [view, setView] = useState(
     () => new Date(startDate.getFullYear(), startDate.getMonth(), 1),
@@ -87,7 +95,12 @@ export function CalendarPopup({
   });
 
   return (
-    <div className="an-filters-bar-calendar-popup" role="dialog" aria-label="Calendar">
+    <div
+      className={`an-filters-bar-calendar-popup ${className}`.trim()}
+      role="dialog"
+      aria-label="Calendar"
+      style={style}
+    >
       <div className="an-calendar__header">
         <IconButton
           label="Previous month"

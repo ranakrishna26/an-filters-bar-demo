@@ -22,18 +22,22 @@ npm run dev
 
 ## Framer embed
 
-Use a wide frame (≈1280+ px wide, ~120–160 px tall for the bar alone):
+Dropdowns live **inside the iframe**, so they cannot spill outside Framer’s Embed box. Give the Embed enough height for open menus.
+
+Recommended Embed size:
+- **Width:** Fill / `1fr` (wide page)
+- **Height:** Fixed **360–420** (not huge empty 600 with centered bar — wasteful and still clips long KPI lists)
 
 ```html
 <iframe
   src="https://an-filters-bar-demo.vercel.app/?embed=1"
   title="AN Filters Bar"
-  style="border:0;width:100%;height:140px;display:block;background:#f5f5f5;"
+  style="border:0;width:100%;height:100%;display:block;background:#f5f5f5;"
   loading="lazy"
 ></iframe>
 ```
 
-If you open menus/calendar, give the frame more height (≈400–500px) so popups aren’t clipped.
+The bar pins to the **top** of the iframe; menus open downward into the free space.
 
 ## What you can try
 

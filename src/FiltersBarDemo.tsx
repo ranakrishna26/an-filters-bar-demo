@@ -15,6 +15,7 @@ import { MoreMenu } from './components/MoreMenu';
 import { MultiSelectFilter } from './components/MultiSelectFilter';
 import { OutlinedSelect } from './components/OutlinedSelect';
 import { SegmentedControl } from './components/SegmentedControl';
+import { useEmbedMenuStyle } from './hooks/useEmbedMenuStyle';
 import {
   AREA_FILTERS,
   DEFAULT_END_DATE,
@@ -105,6 +106,16 @@ export function FiltersBarDemo({ onChange, onViewState }: FiltersBarDemoProps) {
   const mandatoryRef = useRef<HTMLDivElement>(null);
   const actionsRef = useRef<HTMLDivElement>(null);
   const dateRef = useRef<HTMLDivElement>(null);
+  const starRef = useRef<HTMLButtonElement>(null);
+  const calendarBtnRef = useRef<HTMLButtonElement>(null);
+  const favoritesMenuStyle = useEmbedMenuStyle(openId === 'favorites', starRef, {
+    matchWidth: false,
+    minHeight: 80,
+  });
+  const calendarMenuStyle = useEmbedMenuStyle(calendarOpen, calendarBtnRef, {
+    matchWidth: false,
+    minHeight: 320,
+  });
 
   const currentSnapshot = useMemo<FilterSnapshot>(
     () => ({
@@ -402,6 +413,7 @@ export function FiltersBarDemo({ onChange, onViewState }: FiltersBarDemoProps) {
       <span className="an-filters-bar__divider" aria-hidden />
       <div className="an-favorites">
         <IconButton
+          ref={starRef}
           label={matchedFavorite ? 'Update this favorite' : 'Save as favorite'}
           active={openId === 'favorites'}
           onClick={() => setOnlyOpen(openId === 'favorites' ? null : 'favorites')}
@@ -415,7 +427,13 @@ export function FiltersBarDemo({ onChange, onViewState }: FiltersBarDemoProps) {
           />
         </IconButton>
         {openId === 'favorites' && (
-          <div className="an-filter-bar-menu-surface an-favorites-menu" role="menu">
+          <div
+            className={`an-filter-bar-menu-surface an-favorites-menu${
+              favoritesMenuStyle ? ' an-filter-bar-menu-surface--anchored' : ''
+            }`}
+            role="menu"
+            style={favoritesMenuStyle}
+          >
             <button
               type="button"
               className="an-more-list__item"
@@ -498,6 +516,7 @@ export function FiltersBarDemo({ onChange, onViewState }: FiltersBarDemoProps) {
       </div>
       <div className="an-filters-bar__calendar-wrap">
         <IconButton
+          ref={calendarBtnRef}
           label="Open calendar"
           active={calendarOpen}
           onClick={() => {
@@ -517,6 +536,10 @@ export function FiltersBarDemo({ onChange, onViewState }: FiltersBarDemoProps) {
               setEndDate(end);
             }}
             onClose={() => setCalendarOpen(false)}
+            style={calendarMenuStyle}
+            className={
+              calendarMenuStyle ? 'an-filters-bar-calendar-popup--anchored' : ''
+            }
           />
         )}
       </div>

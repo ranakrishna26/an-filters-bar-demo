@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef } from 'react';
 import { AREA_OF_INTEREST_OPTIONS } from '../demoData';
+import { useEmbedMenuStyle } from '../hooks/useEmbedMenuStyle';
 import { IconButton } from './IconButton';
 import { PlusFilterIcon } from './icons';
 
@@ -17,7 +18,12 @@ export function AreaOfInterestFilter({
   onOpenChange,
 }: AreaOfInterestFilterProps) {
   const rootRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const menuId = useId();
+  const menuStyle = useEmbedMenuStyle(open, triggerRef, {
+    matchWidth: false,
+    minHeight: 280,
+  });
 
   useEffect(() => {
     if (!open) return;
@@ -48,6 +54,7 @@ export function AreaOfInterestFilter({
   return (
     <div className="an-aoi" ref={rootRef}>
       <IconButton
+        ref={triggerRef}
         label="Add filter"
         aria-expanded={open}
         aria-controls={menuId}
@@ -60,8 +67,11 @@ export function AreaOfInterestFilter({
       {open && (
         <div
           id={menuId}
-          className="an-filter-bar-menu-surface an-aoi-menu"
+          className={`an-filter-bar-menu-surface an-aoi-menu${
+            menuStyle ? ' an-filter-bar-menu-surface--anchored' : ''
+          }`}
           role="menu"
+          style={menuStyle}
         >
           <div className="an-aoi-heading">Area of interest</div>
           <div className="an-aoi-list">

@@ -5,6 +5,7 @@ import {
   type ReactNode,
   type RefObject,
 } from 'react';
+import { useEmbedMenuStyle } from '../hooks/useEmbedMenuStyle';
 import { ChevronDownIcon } from './icons';
 
 interface OutlinedSelectProps {
@@ -34,6 +35,10 @@ export function OutlinedSelect({
   const rootRef = useRef<HTMLDivElement>(null);
   const listId = useId();
   const buttonRef = triggerRef ?? localRef;
+  const menuStyle = useEmbedMenuStyle(open, buttonRef, {
+    matchWidth: matchMenuWidth,
+    minHeight: 260,
+  });
 
   useEffect(() => {
     if (!open) return;
@@ -80,8 +85,9 @@ export function OutlinedSelect({
           id={listId}
           className={`an-filter-bar-menu-surface${
             matchMenuWidth ? ' an-filter-bar-menu-surface--match' : ''
-          }`}
+          }${menuStyle ? ' an-filter-bar-menu-surface--anchored' : ''}`}
           role="listbox"
+          style={menuStyle}
         >
           {children}
         </div>

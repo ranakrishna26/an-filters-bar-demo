@@ -564,17 +564,33 @@ body.connect-light .an-segmented-control {
   cursor: pointer;
 }
 
+/* Embed: pin bar to the top so dropdowns open into free space below */
 .app-shell--embed {
   min-height: 100%;
   height: 100%;
   padding: 0;
+  gap: 0;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow: visible;
 }
 
 html[data-embed='true'],
 html[data-embed='true'] body,
 html[data-embed='true'] #root {
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
+  background: var(--color-background-fill-0);
+}
+
+.app-shell--embed .an-filters-bar {
+  flex-shrink: 0;
+}
+
+html[data-embed='true'] .an-filter-bar-menu-surface--anchored,
+html[data-embed='true'] .an-filters-bar-calendar-popup--anchored {
+  position: fixed;
+  z-index: 1000;
 }
 
 .an-filter-state-panel {

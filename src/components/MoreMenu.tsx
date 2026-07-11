@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef } from 'react';
 import type { Favorite } from '../demoData';
+import { useEmbedMenuStyle } from '../hooks/useEmbedMenuStyle';
 import { IconButton } from './IconButton';
 import { MoreIcon } from './icons';
 
@@ -19,7 +20,12 @@ export function MoreMenu({
   onRestoreDefaults,
 }: MoreMenuProps) {
   const rootRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const menuId = useId();
+  const menuStyle = useEmbedMenuStyle(open, triggerRef, {
+    matchWidth: false,
+    minHeight: 160,
+  });
 
   useEffect(() => {
     if (!open) return;
@@ -42,6 +48,7 @@ export function MoreMenu({
   return (
     <div className="an-more" ref={rootRef}>
       <IconButton
+        ref={triggerRef}
         label="More"
         aria-expanded={open}
         aria-controls={menuId}
@@ -54,8 +61,11 @@ export function MoreMenu({
       {open && (
         <div
           id={menuId}
-          className="an-filter-bar-menu-surface an-more-list"
+          className={`an-filter-bar-menu-surface an-more-list${
+            menuStyle ? ' an-filter-bar-menu-surface--anchored' : ''
+          }`}
           role="menu"
+          style={menuStyle}
         >
           {favorites.length > 0 && (
             <>
