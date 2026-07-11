@@ -316,6 +316,11 @@ body.connect-light .an-segmented-control {
   font: var(--typography-component-m);
   text-align: left;
   cursor: pointer;
+  white-space: nowrap;
+}
+
+.an-kpi-list {
+  min-width: max(100%, 14rem);
 }
 
 .an-aoi-menu {

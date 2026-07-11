@@ -21,6 +21,7 @@ export function KpiSelectFilter({
       open={open}
       onOpenChange={onOpenChange}
       width="wide"
+      matchMenuWidth={false}
       chip={
         selected ? (
           <Chip onClear={() => onChange(null)} clearLabel="Clear KPI">
