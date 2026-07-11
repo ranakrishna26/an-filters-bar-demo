@@ -601,7 +601,8 @@ html[data-embed='true'] #root {
 
 .embed-frame__canvas {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   transform-origin: top left;
   overflow: hidden;
   background: var(--color-background-fill-0);
@@ -610,30 +611,18 @@ html[data-embed='true'] #root {
 .embed-frame__center {
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   box-sizing: border-box;
 }
 
-.embed-scale-slot {
-  position: relative;
-  flex-shrink: 0;
-  overflow: visible;
-}
-
-.embed-scale-slot__inner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform-origin: top left;
-}
-
-.embed-scale-slot__inner--bar {
+.embed-bar {
   width: 760px;
+  transform-origin: center center;
+  flex-shrink: 0;
 }
 
-.embed-scale-slot__inner--bar .an-filters-bar {
+.embed-bar .an-filters-bar {
   width: 760px;
   border: var(--border-width-light) solid var(--color-background-border-2);
   border-radius: var(--border-radius-smooth);

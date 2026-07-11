@@ -9,10 +9,9 @@ type Theme = 'connect-light' | 'connect-dark';
 export const FRAME_WIDTH = 1106;
 export const FRAME_HEIGHT = 718.5;
 
-/** Natural bar layout — scaled up uniformly to fill the frame width. */
+/** Design width of the bar; scaled uniformly to fill the frame. */
 const BAR_WIDTH = 760;
-const BAR_HEIGHT = 140;
-const FRAME_PAD = 48;
+const FRAME_PAD = 56;
 
 function readQuery() {
   const params = new URLSearchParams(window.location.search);
@@ -55,11 +54,8 @@ function useContainScale(
   return scale;
 }
 
-const barScale = Math.min(
-  1,
-  (FRAME_WIDTH - FRAME_PAD * 2) / BAR_WIDTH,
-  (FRAME_HEIGHT - FRAME_PAD * 2) / BAR_HEIGHT,
-);
+/** Uniform scale — fill frame width, allow scale > 1. */
+const barScale = (FRAME_WIDTH - FRAME_PAD * 2) / BAR_WIDTH;
 
 export default function App() {
   const initial = useMemo(() => readQuery(), []);
@@ -77,27 +73,6 @@ export default function App() {
     document.body.className = theme;
     document.documentElement.dataset.embed = embed ? 'true' : 'false';
   }, [theme, embed]);
-
-  const bar = (
-    <div
-      className="embed-scale-slot"
-      style={{
-        width: BAR_WIDTH * barScale,
-        height: BAR_HEIGHT * barScale,
-      }}
-    >
-      <div
-        className="embed-scale-slot__inner embed-scale-slot__inner--bar"
-        style={{
-          width: BAR_WIDTH,
-          height: BAR_HEIGHT,
-          transform: `scale(${barScale})`,
-        }}
-      >
-        <FiltersBarDemo />
-      </div>
-    </div>
-  );
 
   return (
     <div
@@ -134,7 +109,14 @@ export default function App() {
               transform: `scale(${frameScale})`,
             }}
           >
-            <div className="embed-frame__center">{bar}</div>
+            <div className="embed-frame__center">
+              <div
+                className="embed-bar"
+                style={{ transform: `scale(${barScale})` }}
+              >
+                <FiltersBarDemo />
+              </div>
+            </div>
           </div>
         </div>
       ) : (
