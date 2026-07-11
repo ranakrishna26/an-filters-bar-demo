@@ -2,7 +2,18 @@
 
 Standalone Vite + React + TypeScript demo of an observability **global filter bar**. No backend, no private design-system packages — Connect-like styling and hardcoded data.
 
-## Run
+## Live URL (permanent)
+
+**https://an-filters-bar-demo.vercel.app**
+
+Embed-ready:
+
+- https://an-filters-bar-demo.vercel.app/?embed=1
+- https://an-filters-bar-demo.vercel.app/?embed=1&theme=dark
+
+Repo: https://github.com/ranakrishna26/an-filters-bar-demo
+
+## Run locally
 
 ```bash
 npm install
@@ -11,18 +22,18 @@ npm run dev
 
 ## Framer embed
 
-Deploy to Vercel production, then iframe:
+Use a wide frame (≈1280+ px wide, ~120–160 px tall for the bar alone):
 
 ```html
 <iframe
-  src="https://YOUR-PROJECT.vercel.app/?embed=1"
+  src="https://an-filters-bar-demo.vercel.app/?embed=1"
   title="AN Filters Bar"
-  style="border:0;width:100%;height:120px;display:block;background:#f5f5f5;"
+  style="border:0;width:100%;height:140px;display:block;background:#f5f5f5;"
   loading="lazy"
 ></iframe>
 ```
 
-Use a wide frame (≈1280+ px). Dark: `?embed=1&theme=dark`.
+If you open menus/calendar, give the frame more height (≈400–500px) so popups aren’t clipped.
 
 ## What you can try
 
