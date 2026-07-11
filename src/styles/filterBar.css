@@ -10,6 +10,9 @@
   align-items: start;
   padding: 16px 16px 4px;
   background: var(--color-background-fill-1);
+  position: relative;
+  width: 100%;
+}
 
 .an-filters-bar--has-exposed {
   grid-template-areas:
