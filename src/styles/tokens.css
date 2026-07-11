@@ -1,0 +1,115 @@
+:root,
+body.connect-light {
+  --color-background-fill-0: #f5f5f5;
+  --color-background-fill-1: #ffffff;
+  --color-background-fill-2: #e8e8e8;
+  --color-background-border-2: #dcdcdc;
+  --color-tone-10: #f0f0f0;
+  --color-tone-20: #e0e0e0;
+  --color-transparent: transparent;
+  --color-content-caption: #6b6b6b;
+  --color-content-label: #4a4a4a;
+  --color-content-title: #1a1a1a;
+  --color-content-divider: #c8c8c8;
+  --color-content-shadow: rgba(0, 0, 0, 0.15);
+  --color-content-link-default: #005aff;
+  --color-forms-list-fill-default: #ffffff;
+  --color-forms-list-fill-hover: #f0f0f0;
+  --color-forms-list-fill-pressed: #e8e8e8;
+  --color-forms-list-fill-selected: #e3f2fd;
+  --color-forms-list-fill-transparent: transparent;
+  --color-forms-list-border-transparent: rgba(0, 0, 0, 0.08);
+  --color-forms-list-text-default: #1a1a1a;
+  --color-forms-list-text-selected: #1a1a1a;
+  --color-forms-input-border-default: #c8c8c8;
+  --color-forms-input-border-active: #005aff;
+  --color-toggle-off-text-default: #6b6b6b;
+  --color-toggle-off-fill-hover: #e0e0e0;
+  --color-toggle-on-fill-default: #ffffff;
+  --color-toggle-on-border-default: #dcdcdc;
+  --color-toggle-on-text-default: #1a1a1a;
+  --color-interaction-primary-border-default: #005aff;
+  --color-interaction-primary-border-active: #005aff;
+  --color-interaction-primary-fill-default: #005aff;
+  --color-interaction-primary-text-default: #ffffff;
+  --color-feedback-yellow-main-fill-default: #ffc107;
+  --chip-grey-bg: #eeeeee;
+  --chip-grey-text: #424242;
+  --chip-grey-border: #e0e0e0;
+  --chip-vip-bg: #fff8e1;
+  --chip-vip-text: #6d4c00;
+  --chip-vip-border: #ffe082;
+  --space-s: 4px;
+  --space-m: 8px;
+  --space-l: 12px;
+  --space-xl: 16px;
+  --dimension-4: 4px;
+  --dimension-8: 8px;
+  --dimension-12: 12px;
+  --dimension-14: 14px;
+  --dimension-16: 16px;
+  --dimension-18: 18px;
+  --dimension-24: 24px;
+  --dimension-28: 28px;
+  --dimension-44: 44px;
+  --size-4: 4px;
+  --size-height-m: 36px;
+  --border-radius-slight: 4px;
+  --border-radius-smooth: 8px;
+  --border-radius-moderate: 8px;
+  --border-width-light: 1px;
+  --font-family-text: 'Segoe UI', system-ui, sans-serif;
+  --font-weight-bold: 700;
+  --line-height-150: 1.5;
+  --typography-body-s: 400 12px/1.5 var(--font-family-text);
+  --typography-component-m: 500 14px/1.25 var(--font-family-text);
+  --typography-title-m: 700 16px/1.5 var(--font-family-text);
+  --filter-width-wide: calc(16px * 11 + 12px);
+  --filter-width-select: calc(16px * 8 + 4px);
+  --filter-width-narrow: calc(16px * 6 + 12px);
+}
+
+body.connect-dark {
+  --color-background-fill-0: #1a1a1a;
+  --color-background-fill-1: #2a2a2a;
+  --color-background-fill-2: #333333;
+  --color-background-border-2: #444444;
+  --color-tone-10: #333333;
+  --color-tone-20: #3a3a3a;
+  --color-content-caption: #a0a0a0;
+  --color-content-label: #b0b0b0;
+  --color-content-title: #f0f0f0;
+  --color-content-divider: #555555;
+  --color-content-shadow: rgba(0, 0, 0, 0.4);
+  --color-forms-list-fill-default: #2a2a2a;
+  --color-forms-list-fill-hover: #383838;
+  --color-forms-list-fill-selected: #1e3a5f;
+  --color-forms-list-text-default: #f0f0f0;
+  --color-forms-input-border-default: #555555;
+  --color-toggle-on-fill-default: #444444;
+  --color-toggle-on-border-default: #555555;
+  --color-toggle-on-text-default: #ffffff;
+  --chip-grey-bg: #424242;
+  --chip-grey-text: #e0e0e0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-family-text);
+  background: var(--color-background-fill-0);
+  color: var(--color-content-title);
+  line-height: var(--line-height-150);
+}
