@@ -610,18 +610,28 @@ html[data-embed='true'] #root {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
   box-sizing: border-box;
 }
 
-.embed-frame__bar-slot {
-  width: 100%;
-  max-width: 1026px;
+.embed-scale-slot {
+  position: relative;
   flex-shrink: 0;
+  overflow: visible;
 }
 
-.embed-frame__bar-slot .an-filters-bar {
-  width: 100%;
+.embed-scale-slot__inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+}
+
+.embed-scale-slot__inner--bar {
+  width: 1026px;
+}
+
+.embed-scale-slot__inner--bar .an-filters-bar {
+  width: 1026px;
   border-radius: var(--border-radius-smooth);
 }
 

@@ -5,9 +5,14 @@ import './styles/filterBar.css';
 
 type Theme = 'connect-light' | 'connect-dark';
 
-/** Framer embed design frame — fixed aspect, UI centered inside. */
+/** Framer embed design frame. */
 export const FRAME_WIDTH = 1106;
 export const FRAME_HEIGHT = 718.5;
+
+/** Natural bar layout width — scaled uniformly if needed. */
+const BAR_WIDTH = 1026;
+const BAR_HEIGHT = 200;
+const FRAME_PAD = 40;
 
 function readQuery() {
   const params = new URLSearchParams(window.location.search);
@@ -50,17 +55,49 @@ function useContainScale(
   return scale;
 }
 
+const barScale = Math.min(
+  1,
+  (FRAME_WIDTH - FRAME_PAD * 2) / BAR_WIDTH,
+  (FRAME_HEIGHT - FRAME_PAD * 2) / BAR_HEIGHT,
+);
+
 export default function App() {
   const initial = useMemo(() => readQuery(), []);
   const [theme, setTheme] = useState<Theme>(initial.theme);
   const embed = initial.embed;
   const shellRef = useRef<HTMLDivElement>(null);
-  const scale = useContainScale(embed, shellRef, FRAME_WIDTH, FRAME_HEIGHT);
+  const frameScale = useContainScale(
+    embed,
+    shellRef,
+    FRAME_WIDTH,
+    FRAME_HEIGHT,
+  );
 
   useEffect(() => {
     document.body.className = theme;
     document.documentElement.dataset.embed = embed ? 'true' : 'false';
   }, [theme, embed]);
+
+  const bar = (
+    <div
+      className="embed-scale-slot"
+      style={{
+        width: BAR_WIDTH * barScale,
+        height: BAR_HEIGHT * barScale,
+      }}
+    >
+      <div
+        className="embed-scale-slot__inner embed-scale-slot__inner--bar"
+        style={{
+          width: BAR_WIDTH,
+          height: BAR_HEIGHT,
+          transform: `scale(${barScale})`,
+        }}
+      >
+        <FiltersBarDemo />
+      </div>
+    </div>
+  );
 
   return (
     <div
@@ -85,8 +122,8 @@ export default function App() {
         <div
           className="embed-frame"
           style={{
-            width: FRAME_WIDTH * scale,
-            height: FRAME_HEIGHT * scale,
+            width: FRAME_WIDTH * frameScale,
+            height: FRAME_HEIGHT * frameScale,
           }}
         >
           <div
@@ -94,14 +131,10 @@ export default function App() {
             style={{
               width: FRAME_WIDTH,
               height: FRAME_HEIGHT,
-              transform: `scale(${scale})`,
+              transform: `scale(${frameScale})`,
             }}
           >
-            <div className="embed-frame__center">
-              <div className="embed-frame__bar-slot">
-                <FiltersBarDemo />
-              </div>
-            </div>
+            <div className="embed-frame__center">{bar}</div>
           </div>
         </div>
       ) : (
