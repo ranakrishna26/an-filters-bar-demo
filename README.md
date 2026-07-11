@@ -22,11 +22,9 @@ npm run dev
 
 ## Framer embed
 
-Dropdowns live **inside the iframe**, so they cannot spill outside Framer’s Embed box. Give the Embed enough height for open menus.
+Design frame: **1106 × 718.5** (UI centered; scales to fit while keeping that aspect).
 
-Recommended Embed size:
-- **Width:** Fill / `1fr` (wide page)
-- **Height:** Fixed **360–420** (not huge empty 600 with centered bar — wasteful and still clips long KPI lists)
+In Framer, size the Embed to **1106 × 718.5** (or any size with the same ratio).
 
 ```html
 <iframe
@@ -37,7 +35,7 @@ Recommended Embed size:
 ></iframe>
 ```
 
-The bar pins to the **top** of the iframe; menus open downward into the free space.
+Menus open inside the iframe — keep the Embed at least this tall so dropdowns aren’t clipped.
 
 ## What you can try
 
