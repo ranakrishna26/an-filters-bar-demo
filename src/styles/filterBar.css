@@ -9,10 +9,7 @@
   gap: 12px;
   align-items: start;
   padding: 16px 16px 4px;
-  background: var(--color-background-fill-0);
-  position: relative;
-  width: 100%;
-}
+  background: var(--color-background-fill-1);
 
 .an-filters-bar--has-exposed {
   grid-template-areas:
